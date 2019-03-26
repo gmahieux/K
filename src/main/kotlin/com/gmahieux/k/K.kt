@@ -22,13 +22,15 @@ import java.util.Arrays.asList
 fun main() {
     val quotes = Quotes()
 
+
+
     val client = KMongo.createClient(
-        ServerAddress("localhost", 27017),
+        ServerAddress(System.getenv("MONGO_HOST"), System.getenv("MONGO_PORT").toInt()),
         asList(
             MongoCredential.createCredential(
-                "mongoadmin",
+                System.getenv("MONGO_USER"),
                 "admin",
-                "secret".toCharArray()
+                System.getenv("MONGO_PWD").toCharArray()
             )
         )
     )
