@@ -7,6 +7,8 @@
 
         section {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 70%;
             height: 100%;
             margin: auto;
@@ -35,7 +37,26 @@
         blockquote cite::before {
             content: '- '
         }
+        .characters {
+            padding-bottom: 15px;
+        }
+        .characters img {
+            cursor: pointer;
+            width: 200px;
+            border-radius: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
 
+        }
+
+        .characters img:hover {
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+        }
     </style>
 
 </head>
@@ -48,21 +69,33 @@
             <cite id="ref"></cite>
         </blockquote>
     </div>
+    <div class="characters">
+        <img src="img/Arthur.jpg" onclick="getQuote('Arthur')"/>
+        <img src="img/perceval.jpg" onclick="getQuote('Perceval')"/>
+        <img src="img/Karadoc.jpg" onclick="getQuote('Karadoc')"/>
+        <img src="img/kadoc.png" onclick="getQuote('Kadoc')"/>
+    </div>
 </section>
+
+
 </body>
 </html>
 <script language="JavaScript">
 
-    let url = 'quote' + (name ? '/'+name : '')
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(jsonResponse) {
-            console.info(jsonResponse)
 
-            document.getElementById("quote").innerHTML = jsonResponse.quote
-            document.getElementById("ref").innerHTML = jsonResponse.refs.character + ' ('+ jsonResponse.refs.season +', '+jsonResponse.refs.episode+')'
-        });
+    getQuote()
 
+    function getQuote(name) {
+        let url = 'quote' + (name ? '/'+name : '')
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(jsonResponse) {
+                console.info(jsonResponse)
+
+                document.getElementById("quote").innerHTML = jsonResponse.quote
+                document.getElementById("ref").innerHTML = jsonResponse.refs.character + ' ('+ jsonResponse.refs.season +', '+jsonResponse.refs.episode+')'
+            });
+    }
 </script>
