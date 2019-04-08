@@ -13,4 +13,6 @@ class Quotes {
     val quotes = Gson().fromJson<List<Quote>>(Quotes::class.java.getResource("/citations.json").readText(), listType)
 
     fun getRandomQuote() =quotes[Random(Instant.now().epochSecond).nextInt(0,quotes.size)]
+
+
 }

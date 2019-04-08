@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
         - name: k-snapshot
-          image: 'localhost:32000/k-snapshot:1.0-SNAPSHOT'
+          image: 'localhost:32000/k-snapshot:2.0-SNAPSHOT'
           env:
             - name: MONGO_HOST
               value: mongo-service
@@ -75,6 +75,7 @@ spec:
                   key: mongodb-root-password
           ports:
             - containerPort: 8080
+          imagePullPolicy: Always
 
 ---
 apiVersion: v1

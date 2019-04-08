@@ -19,6 +19,7 @@ import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import org.litote.kmongo.KMongo
+import org.litote.kmongo.MongoOperator.match
 import org.litote.kmongo.MongoOperator.sample
 import org.litote.kmongo.aggregate
 import org.litote.kmongo.getCollection
@@ -56,7 +57,11 @@ fun main() {
                 default("index.html")
             }
             get("/quote") {
-                val quote = col.aggregate<Quote>("""[{ ${sample}: { size: 1 } }]""").first()
+                throw NullPointerException()
+            }
+            get("/quote/{character}") {
+                val character = call.parameters["character"]
+                val quote = col.aggregate<Quote>("""[{ $match: { "refs.character": "$character" } }, { $sample: { size: 1 } }]""").first()
                 call.respond(quote)
             }
         }
