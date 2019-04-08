@@ -57,7 +57,8 @@ fun main() {
                 default("index.html")
             }
             get("/quote") {
-                throw NullPointerException()
+                val quote = col.aggregate<Quote>("""[{ ${sample}: { size: 1 } }]""").first()
+                call.respond(quote)
             }
             get("/quote/{character}") {
                 val character = call.parameters["character"]
