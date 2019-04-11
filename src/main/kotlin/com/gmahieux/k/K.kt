@@ -2,13 +2,18 @@ package com.gmahieux.k
 
 import com.gmahieux.k.data.Quotes
 import com.gmahieux.k.model.Quote
-import com.google.gson.Gson
 import com.mongodb.MongoCredential
 import com.mongodb.ServerAddress
 import com.mongodb.client.MongoCollection
 import io.ktor.application.call
-import io.ktor.http.ContentType
-import io.ktor.response.respondText
+import io.ktor.application.install
+import io.ktor.features.ContentNegotiation
+import io.ktor.gson.gson
+import io.ktor.http.content.default
+import io.ktor.http.content.files
+import io.ktor.http.content.static
+import io.ktor.http.content.staticRootFolder
+import io.ktor.response.respond
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
@@ -17,11 +22,11 @@ import org.litote.kmongo.KMongo
 import org.litote.kmongo.MongoOperator.sample
 import org.litote.kmongo.aggregate
 import org.litote.kmongo.getCollection
+import java.io.File
 import java.util.Arrays.asList
 
 fun main() {
     val quotes = Quotes()
-
 
 
     val client = KMongo.createClient(
@@ -39,17 +44,20 @@ fun main() {
     insertQuoteIfMissing(col, quotes)
 
     val server = embeddedServer(Netty, port = 8080) {
+        install(ContentNegotiation) {
+            gson { }
+        }
         routing {
-            get("/") {
-
-                call.respondText("Hello World!", ContentType.Text.Plain)
+            static("") {
+                staticRootFolder = File("/www")
+                static("img") {
+                    files("img")
+                }
+                default("index.html")
             }
             get("/quote") {
                 val quote = col.aggregate<Quote>("""[{ ${sample}: { size: 1 } }]""").first()
-                call.respondText(
-                    contentType = ContentType.Application.Json,
-                    text = Gson().toJson(quote, Quote::class.java)
-                )
+                call.respond(quote)
             }
         }
     }

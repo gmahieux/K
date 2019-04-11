@@ -1,0 +1,68 @@
+<html>
+<head>
+    <style>
+        body {
+            background: url(img/k.png) center no-repeat #efefef;
+        }
+
+        section {
+            display: flex;
+            width: 70%;
+            height: 100%;
+            margin: auto;
+        }
+
+        .quote {
+            margin: auto; /* Important */
+            text-align: center;
+        }
+        blockquote {
+            font-size: 2em;
+        }
+        blockquote p::before {
+            content: '\201C';
+        }
+
+        blockquote p::after {
+            content: '\201D';
+        }
+
+        blockquote cite {
+            display: block;
+            text-align: right;
+            font-size: 0.8em;
+        }
+        blockquote cite::before {
+            content: '- '
+        }
+
+    </style>
+
+</head>
+
+<body>
+<section>
+    <div class="quote">
+        <blockquote>
+            <p id="quote"></p>
+            <cite id="ref"></cite>
+        </blockquote>
+    </div>
+</section>
+</body>
+</html>
+<script language="JavaScript">
+
+    let url = 'quote' + (name ? '/'+name : '')
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(jsonResponse) {
+            console.info(jsonResponse)
+
+            document.getElementById("quote").innerHTML = jsonResponse.quote
+            document.getElementById("ref").innerHTML = jsonResponse.refs.character + ' ('+ jsonResponse.refs.season +', '+jsonResponse.refs.episode+')'
+        });
+
+</script>
