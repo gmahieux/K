@@ -16,16 +16,16 @@ class: impact
 
 ### REX : Helm en prod chez Saagie
 
-.col-3[
-.small[Ghislain Mahieux]
+.col-4[
+Ghislain Mahieux
 .radius[![](./images/g.jpg)]
 ]
-.col-6[
+.col-4[
 &nbsp;&nbsp;&nbsp;
 ]
-.col-3[
-.small[Pierre Leresteux]
-.radius[![](./images/image.png)]
+.col-4[
+Pierre Leresteux
+.radius[![](./images/p.jpg)]
 ]
 
 ---
@@ -37,13 +37,13 @@ class: impact
 ]
 .col-10[
 .center.big[
-CETTE PRESNETATION N'EST PAS  
-UNE PRESNETATION SUR  
+CETTE PRESNETATION N'EST PAS
+UNE PRESNETATION SUR
 KUBERNETEMSE
 ]
 
-.right[
-MERCI DE VOTRE  
+.right.italic[
+MERCI DE VOTRE
 COMPREHENSION
 ]
 ]
@@ -114,10 +114,11 @@ class: impact
 
 ]
 .col-6[
-  .radius.responsive.full-width[![](./images/leodagan.png)]
-  .small.right["Ma parole, des engins comme vous, ça devrait être fourni avec une notice !"]
-  .quote.right[\- Léodagan (Livre I, La potion de Fécondité)]
+.radius.responsive.full-width[![](./images/leodagan.png)]
+.small.right["Ma parole, des engins comme vous, ça devrait être fourni avec une notice !"]
+.quote.right[\- Léodagan (Livre I, La potion de Fécondité)]
 ]
+
 ---
 
 class: impact
@@ -130,7 +131,5 @@ class: impact
 .col-3[.responsive.full-width[![](./images/sticker2.png)]]
 .col-2[&nbsp;]
 
-
 .col-12.small.italic[
 (Saagie Stand S20)]
-
