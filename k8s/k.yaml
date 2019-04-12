@@ -1,6 +1,53 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  name: k-snapshot
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: k-snapshot
+    spec:
+      containers:
+        - name: k-snapshot
+          image: 'localhost:32000/k:1.0'
+          env:
+            - name: MONGO_HOST
+              value: mongo-service
+            - name: MONGO_PORT
+              value: "27017"
+            - name: MONGO_USER
+              value: mongoadmin
+            - name: MONGO_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongodb-root-password
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k-snapshot-service
+  labels:
+    name: k-snapshot-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: k
+  selector:
+    app: k-snapshot
+  type: ClusterIP
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
   name: mongo
 spec:
   replicas: 1
@@ -47,50 +94,3 @@ type: Opaque
 data:
   mongodb-root-password: "c2VjcmV0"
 ---
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: k-snapshot
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: k-snapshot
-    spec:
-      containers:
-        - name: k-snapshot
-          image: 'localhost:32000/k-snapshot:2.0-SNAPSHOT'
-          env:
-            - name: MONGO_HOST
-              value: mongo-service
-            - name: MONGO_PORT
-              value: "27017"
-            - name: MONGO_USER
-              value: mongoadmin
-            - name: MONGO_PWD
-              valueFrom:
-                secretKeyRef:
-                  name: mongodb-secret
-                  key: mongodb-root-password
-          ports:
-            - containerPort: 8080
-          imagePullPolicy: Always
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: k-snapshot-service
-  labels:
-    name: k-snapshot-service
-spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
-      protocol: TCP
-      name: k
-  selector:
-    app: k-snapshot
-  type: ClusterIP
-
