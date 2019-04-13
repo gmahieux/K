@@ -24,10 +24,18 @@ import org.litote.kmongo.MongoOperator.sample
 import org.litote.kmongo.aggregate
 import org.litote.kmongo.getCollection
 import java.io.File
+import java.io.FileReader
+import java.util.*
 import java.util.Arrays.asList
 
 fun main() {
     val quotes = Quotes()
+
+    val props = Properties()
+    FileReader("/config/config.properties")
+        .use {
+            props.load(it)
+        }
 
 
     val client = KMongo.createClient(
@@ -54,7 +62,13 @@ fun main() {
                 static("img") {
                     files("img")
                 }
+                static("css") {
+                   files("css")
+                }
                 default("index.html")
+            }
+            get("/props") {
+                call.respond(props)
             }
             get("/quote") {
                 val quote = col.aggregate<Quote>("""[{ ${sample}: { size: 1 } }]""").first()

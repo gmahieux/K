@@ -7,6 +7,7 @@ ARG DEPS_TARGET_DIR
 
 ADD ${DEPS_SOURCE_DIR}  ./${DEPS_TARGET_DIR}
 ADD static /www
+ADD config /config
 
 ARG JAR_FILE
 ADD ${JAR_FILE} app.jar
