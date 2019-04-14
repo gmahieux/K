@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "k.fullname" . }}
+data:
+  config.properties: |-
+{{ (.Files.Get "config/config.properties") | indent 4 }}
+
+
+
+
