@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: localhost:32000/k
-  tag: "1.0"
+  tag: "3.0"
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -20,7 +20,7 @@ k:
   port: 8080
 
 mongodb:
-  existingSecret: mongodb-secret
+  existingSecret: mongodb-secret-config
   service:
     name: mongodb
     port: 27017
