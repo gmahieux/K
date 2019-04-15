@@ -405,6 +405,11 @@ blockquote {
     max-width: 100%;
   }
 }
+.width60 {
+  img {
+    max-width: 60%;
+  }
+}
 .italic {
   font-style: italic;
 }

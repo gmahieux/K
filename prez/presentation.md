@@ -86,12 +86,12 @@ class: impact
 
 .col-6[
 
-- Templating
+- Templating (Helpers...)
 - Rollback
 - Packaging / Repository
+- Conditionnal deployment
 - Hooks
 - Automatic reload
-- Conditionnal deployment
   ]
   .col-6[
   .radius.responsive.full-width[![](./images/perceval.png)]
@@ -119,6 +119,23 @@ class: impact
 .quote.right[\- Léodagan (Livre I, La potion de Fécondité)]
 ]
 
+---
+
+# Au final...
+
+.radius.width60[![](./images/arthur.png)]
+.small.right["Je gueule ; c'est vrai, j'suis un peu sec, tout ça, mais pour quelqu'un comme moi qui a facilement tendance à la dépression c'est très important ce que vous faites [...] pour la... la santé du... du cigare..."]
+.quote.right[\- Arthur (Livre II, Unagi II)]
+
+
+
+---
+
+# Questions
+
+.radius.width60[![](./images/yvain.png)]
+.small.right["Est-ce qu'on peut s'en servir pour donner de l'élan à un pigeon ?"]
+.quote.right[\- Yvain (Livre III, L'étudiant)]
 ---
 
 class: impact
