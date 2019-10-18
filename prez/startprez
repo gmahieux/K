@@ -1,0 +1,1 @@
+docker run --rm -it -p 4100:4100 -w /prez -v "/home/pierre/tmp/HP Spectre/sources/github/K/prez:/prez" node:lts npm start

@@ -10,7 +10,7 @@ $dark: #333;
 $text-dark: #313741;
 $text-light: $light;
 $links: $primary;
-$text-background: #c26b49;
+$text-background: #A35F4A;
 $code-background: transparent;
 $overlay: transparentize(#000, 0.5);
 $font-size: 2rem;
@@ -204,9 +204,7 @@ blockquote {
   bottom: 0;
   left: 0;
   right: 0;
-  background: transparent url(./images/logo-texte-devoxx-france-400.png) right
-    center no-repeat;
-  background-size: auto 100%;
+  
   text-shadow: 0 0 2px #313640, 0 0 2px #313640, 0 0 2px #313640,
     0 0 2px #313640, 0 0 2px #313640, 0 0 2px #313640, 0 0 2px #313640,
     0 0 2px #313640, 0 0 2px #313640, 0 0 2px #313640, 0 0 2px #313640,
@@ -416,4 +414,8 @@ blockquote {
 .quote {
   font-style: italic;
   font-size: 0.5em;
+}
+
+.col-3 {
+  color: $text-background;
 }

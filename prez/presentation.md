@@ -5,25 +5,23 @@ layout: true
 <!-- This slide will serve as the base layout for all your slides -->
 
 .bottom-bar[
-\#DevoxxFR - @GhislainMahieux @PierreLeresteux
+\#DevoxxMA - @GhislainMahieux @PierreLeresteux
 ]
 
 ---
 
 class: impact
-
+background-image: url(./images/background_devoxxma.jpg)
 # {{title}}
 
 ### REX : Helm en prod chez Saagie
 
-.col-4[
+.col-3[
 Ghislain Mahieux
 .radius[![](./images/g.jpg)]
 ]
-.col-4[
-&nbsp;&nbsp;&nbsp;
-]
-.col-4[
+
+.col-3[
 Pierre Leresteux
 .radius[![](./images/p.jpg)]
 ]
@@ -148,5 +146,3 @@ class: impact
 .col-3[.responsive.full-width[![](./images/sticker2.png)]]
 .col-2[&nbsp;]
 
-.col-12.small.italic[
-(Saagie Stand S20)]
