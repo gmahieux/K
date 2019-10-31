@@ -20,7 +20,7 @@ k:
   port: 8080
 
 mongodb:
-  existingSecret: mongodb-secret-config
+  existingSecret: mongodb-secret
   service:
     name: mongodb
     port: 27017
