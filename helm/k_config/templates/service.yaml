@@ -3,10 +3,7 @@ kind: Service
 metadata:
   name: {{ include "k.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "k.name" . }}
-    helm.sh/chart: {{ include "k.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "k.labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
